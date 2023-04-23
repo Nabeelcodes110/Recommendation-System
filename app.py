@@ -25,7 +25,7 @@ config ={
         'messagingSenderId': "783852311498",
         'appId': "1:783852311498:web:c88764d7cf044b31953533",
         'measurementId': "G-NL2VWLZLNK",
-        'databaseURL':''
+        'databaseURL': "https://aqsa-recommend-default-rtdb.firebaseio.com"
 } 
 
 firebase=pyrebase.initialize_app(config)
@@ -78,7 +78,7 @@ def login():
             password = request.form['password']
             # Check the user's credentials against the database, file, or other storage method
             # For this example, we'll just print the data to the console
-            print(f"User login: {email}, password: {password}")
+            print("User login: {email}, password: {password}")
             try:
                 user = auth.sign_in_with_email_and_password(email,password)
                 session['user'] = email
@@ -108,6 +108,23 @@ def logout():
                            image = list(popular_df['image_url'].values)[0:12],
                            price = list(popular_df['price'].values)[0:12]
                            )
+
+
+@app.route('/like')
+def like():
+    db = firebase.database()
+    user = session['user']
+
+    user_input = request.form.get('user_input')
+    print(user_input)
+    
+    return render_template('index.html',
+                           product = list(popular_df['product_id'].values)[0:12],
+                           rating = list(popular_df['rating_x'].values)[0:12],
+                           image = list(popular_df['image_url'].values)[0:12],
+                           price = list(popular_df['price'].values)[0:12]
+                           )
+
 
 @app.route('/recommend')
 def recommend_ui():
