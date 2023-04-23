@@ -7,25 +7,31 @@ X = pickle.load(open('X.pkl','rb'))
 ratings = pickle.load(open('ratings1.pkl','rb'))
 similarity_scores = pickle.load(open('similarity_scores.pkl','rb'))
 correlation_matrix = pickle.load(open('correlation_matrix.pkl','rb'))
+
+
+product = list(popular_df['product_id'].values)
+rating = list(popular_df['rating_x'].values)
+image = list(popular_df['image_url'].values)
+price = list(popular_df['price'].values)
 # print(similarity_scores.shape)
 app = Flask(__name__)
 
 @app.route('/')
 def index():
     return render_template('index.html',
-                           product = list(popular_df['product_id'].values)[0:12],
-                           rating = list(popular_df['rating_x'].values)[0:12],
-                           image = list(popular_df['image_url'].values)[0:12],
-                           price = list(popular_df['price'].values)[0:12]
+                           product = product[0:12],
+                           rating = np.round_(rating, decimals = 1)[0:12],
+                           image = image[0:12],
+                           price = price[0:12]
                            )
 
 @app.route('/recommend')
 def recommend_ui():
     return render_template('recommend.html',
-                           product = list(popular_df['product_id'].values)[12:],
-                           rating = list(popular_df['rating_x'].values)[12:],
-                           image = list(popular_df['image_url'].values)[12:],
-                           price = list(popular_df['price'].values)[12:]
+                           product = product[12:],
+                           rating = np.round_(rating, decimals = 1)[12:],
+                           image = image[12:],
+                           price = price[12:]
                            )
 
 @app.route('/recommend_kurtis', methods=['post'] )
@@ -38,7 +44,7 @@ def recommend():
     similar_items= sorted(list(enumerate(similarity_scores[index])),key=lambda x:x[1],reverse=True)
     
     data = []
-    for i in similar_items[0:8]:
+    for i in similar_items[0:12]:
         item = [] 
         temp_df = ratings[ratings['product_id']==X.index[i[0]]]
         item.extend(list(temp_df.drop_duplicates('product_id')['product_id'].values))
