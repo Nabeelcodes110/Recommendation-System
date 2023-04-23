@@ -1,0 +1,53 @@
+<html>
+    <head>
+        <style>
+            .image-button {
+                display: inline-block;
+                position: relative;
+                overflow: hidden;
+                width: 30px;
+                height: 30px;
+                }
+
+                .image-button img {
+                display: block;
+                width: 100%;
+                height: 100%;
+                }
+
+                .image-button:hover img {
+                transform: scale(1.1);
+                }
+
+                .image-button::before {
+                content: '';
+                display: block;
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.3);
+                opacity: 0;
+                transition: opacity 0.3s ease-in-out;
+                }
+
+                .image-button:hover::before {
+                opacity: 1;
+                }
+
+
+
+
+
+        </style>
+    </head>
+
+    <body>
+        <a href="#" class="image-button">
+            <img src="C:/safew/FILES/DEGREE/6th sem/MiniProject/Recommendation-System/static/img/like.png" alt="Button Image">
+          </a>
+          
+                
+    </body>
+</html>
