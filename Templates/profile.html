@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>User Profile</title>
+    <link href="../static/css/profile.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="../static/css/form.css">
+  </head>
+  <body>
+
+    <div class="placeholder">
+        <div class="parallax-window" data-parallax="scroll" data-image-src="../static/img/t2.jpg">
+            <div class="tm-header">
+                <div class="row tm-header-inner">
+                    <div class="col-md-6 col-12">
+                        <img src="../static/img/aqsa.jpg" alt="Logo" class="tm-site-logo" /> 
+                        <div class="tm-site-text-box">
+                            <h1 class="tm-site-title">AQSA CHIKAN ARTS</h1>
+                            <h6 class="tm-site-description">Collaborative Product Recommendation Engine</h6>	
+                        </div>
+                    </div>
+                    <nav class="col-md-6 col-12 tm-nav">
+                        <ul class="tm-nav-ul">
+                            <li class="tm-nav-li"><a href="/" class="tm-nav-link active">Home</a></li>
+                            <li class="tm-nav-li"><a href="/recommend" class="tm-nav-link active">Explore</a></li>
+                            <li class="tm-nav-li"><a href="/login" class="tm-nav-link" >Login</a></li>
+                            <li class="tm-nav-li"><a href="/profile" class="tm-nav-link" >Profile</a></li>
+                        </ul>
+                    </nav>	
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <div class="container">
+      <h1>User Profile</h1>
+      <div class="profile">
+        <img src="../static/img/user.png" alt="{{ user.name }}'s Profile Picture">
+        <h2>{{ user }}</h2>
+        <!-- <p><strong>Email:</strong> {{ user.email }}</p>
+        <p><strong>Location:</strong> {{ user.location }}</p>
+        <p><strong>Bio:</strong> {{ user.bio }}</p> -->
+        <a href="/logout">Logout</a>
+      </div>
+    </div>
+  </body>
+</html>

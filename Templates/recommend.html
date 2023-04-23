@@ -32,7 +32,8 @@
 							<ul class="tm-nav-ul">
 								<li class="tm-nav-li"><a href="/" class="tm-nav-link active">Home</a></li>
 								<li class="tm-nav-li"><a href="/recommend" class="tm-nav-link active">Explore</a></li>
-								<li class="tm-nav-li"><a href="about" class="tm-nav-link">About</a></li>
+								<li class="tm-nav-li"><a href="/login" class="tm-nav-link">Login</a></li>
+								<li class="tm-nav-li"><a href="/profile" class="tm-nav-link" >Profile</a></li>
 							</ul>
 						</nav>
 					</div>
@@ -67,7 +68,7 @@
 						  <p class="card-text">{{price[i]}}</p>
 						  <form action="/recommend_kurtis" method="post">
 							<input type="text" name="user_input" value={{product[i]}} style="display:none"/>
-							<button type="submit" >See more</button>
+							<button type="submit" class="tm-btn tm-btn-success">Add</button>
 						  </form>
 						  <!-- <a href="#" class="btn btn-primary" style="background-color: #37b85e; padding-left: 17px; padding-right: 17px; text-align: center;">See more</a> -->
 						</div>
