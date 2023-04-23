@@ -800,3 +800,68 @@ address {
 .panel p {
   padding: 5px 20px 30px;
 }
+
+
+
+
+/* Single Product card  */
+
+.cardp {
+  display: flex;
+  max-height: 30rem;
+  flex-direction: row;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  padding-bottom: 50px;
+  margin-bottom: 50px;
+}
+
+.cardp-image {
+  flex-basis: 40%;
+  margin-right: 20px;
+  max-height: 18rem;
+}
+
+.cardp-image img {
+  max-height: 18rem;
+  object-fit: cover;
+  max-width: 100%;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.cardp-info {
+  padding-left: 50px;
+  flex-basis: 60%;
+}
+
+.cardp-info h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.cardp-info p {
+  font-size: 16px;
+  line-height: 1.5;
+  margin-bottom: 10px;
+}
+
+.cardp-info .price {
+  font-size: 20px;
+  font-weight: bold;
+  color: #4caf50;
+  margin-bottom: 10px;
+}
+
+  button {
+  font-size: 14px;
+  background-color: #4caf50;
+  color: #fff;
+  border: none;
+  padding: 5px 30px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 20px;
+  margin-bottom: 100px;
+  }
