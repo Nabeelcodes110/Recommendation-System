@@ -32,7 +32,8 @@
 							<ul class="tm-nav-ul">
 								<li class="tm-nav-li"><a href="/" class="tm-nav-link active">Home</a></li>
 								<li class="tm-nav-li"><a href="/recommend" class="tm-nav-link active">Explore</a></li>
-								<li class="tm-nav-li"><a href="about" class="tm-nav-link">About</a></li>
+								<li class="tm-nav-li"><a href="/login" class="tm-nav-link" >Login</a></li>
+								<li class="tm-nav-li"><a href="/profile" class="tm-nav-link" >Profile</a></li>
 							</ul>
 						</nav>
 					</div>
@@ -95,24 +96,20 @@
 				<!-- gallery page 1 -->
 				<div id="tm-gallery-page-kitchen" class="tm-gallery-page">
 			{% if data %}
-			{% for i in data %}
-			<!-- Gallery -->
-			<!-- <div class="row tm-gallery"> -->
-				<!-- gallery page 1 -->
-				<!-- <div id="tm-gallery-page-kitchen" class="tm-gallery-page"> -->
-					<!-- <article class="col-lg-4 col-md-4 col-sm-6 col-12 tm-gallery-item">
-						<figure>
-							<img src="{{i[1]}}" />
-							<figcaption>
-								<h4 class="tm-gallery-title text-center">{{i[0]}}</h4>
-								<p class="tm-gallery-price">{{i[2]}} <button type="button"
-										class="tm-btn tm-btn-success tm-add">Add</button></p>
-							</figcaption>
-						</figure>
-					</article>
+			{% for i in data[0:1] %}
+			<div class="cardp" style="width: 50rem; height: 20rem; margin-bottom: 20px; margin-right: 55px;" >
+				<div class="cardp-image">
+					<img src="{{i[1]}}" alt="Product Image">
 				</div>
-			</div> -->
+				<div class="cardp-info">
+					<h2>{{i[0]}}</h2>
+					<div class="price">{{i[2]}}</div>
+					<button >Add</button>
+				</div>
+			</div>
+			{% endfor %}
 
+			{% for i in data[1:9] %}
 			<div class="card" style="width: 14rem; margin-bottom: 20px; margin-right: 55px; ">
 				<img class="card-img-top" src="{{i[1]}}" alt="Card image cap" style="max-height: 260px; object-fit: fill;">
 				<div class="card-body" style="max-height: fit-content;">
@@ -120,12 +117,11 @@
 				  <p class="card-text">{{i[2]}}</p>
 				  <form action="/recommend_kurtis" method="post">
 					<input type="text" name="user_input" value={{i[0]}} style="display:none"/>
-					<button type="submit" class="tm-btn tm-btn-success">See more</button>
+					<button type="submit" class="tm-btn tm-btn-success">Add</button>
 				  </form>
 				  <!-- <a href="#" class="btn btn-primary" style="background-color: #37b85e; padding-left: 17px; padding-right: 17px; text-align: center;">See more</a> -->
 				</div>
 			  </div>
-
 			{% endfor %}
 			{% endif %}
 
