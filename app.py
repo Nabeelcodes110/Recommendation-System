@@ -130,7 +130,7 @@ def recommend():
     similar_items= sorted(list(enumerate(similarity_scores[index])),key=lambda x:x[1],reverse=True)
     
     data = []
-    for i in similar_items[0:8]:
+    for i in similar_items[0:9]:
         item = [] 
         temp_df = ratings[ratings['product_id']==X.index[i[0]]]
         item.extend(list(temp_df.drop_duplicates('product_id')['product_id'].values))
