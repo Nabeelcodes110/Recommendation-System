@@ -13,7 +13,7 @@ product = list(popular_df['product_id'].values)
 rating = list(popular_df['rating_x'].values)
 image = list(popular_df['image_url'].values)
 price = list(popular_df['price'].values)
-# print(similarity_scores.shape)
+print(similarity_scores.shape)
 app = Flask(__name__)
 
 #FIREBASE AUTHENTICATION **********************************
@@ -55,7 +55,7 @@ def signup():
             password = request.form['password']
             # Save the user data to a database, file, or other storage method
             # For this example, we'll just print the data to the console
-            user=auth.create_user_with_email_and_password(email,password)
+            # user=auth.create_user_with_email_and_password(email,password)
             print(f"New user: {email}, password: {password}")
             
         # If the request method is GET, show the signup form
