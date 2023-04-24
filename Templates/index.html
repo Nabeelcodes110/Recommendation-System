@@ -3,38 +3,38 @@
 
 <head>
 	<meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Recommender</title>
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400" rel="stylesheet" />    
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+	<title>Recommender</title>
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:400" rel="stylesheet" />
 	<link href="../static/css/style.css" rel="stylesheet" />
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+		integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 
-<body> 
-
+<body>
 	<div class="container">
-	<!-- Top box -->
+		<!-- Top box -->
 		<!-- Logo & Site Name -->
 		<div class="placeholder">
 			<div class="parallax-window" data-parallax="scroll" data-image-src="../static/img/t2.jpg">
 				<div class="tm-header">
 					<div class="row tm-header-inner">
 						<div class="col-md-6 col-12">
-							<img src="../static/img/aqsa.jpg" alt="Logo" class="tm-site-logo" /> 
+							<img src="../static/img/aqsa.jpg" alt="Logo" class="tm-site-logo" />
 							<div class="tm-site-text-box">
 								<h1 class="tm-site-title">AQSA CHIKAN ARTS</h1>
-								<h6 class="tm-site-description">Collaborative Product Recommendation Engine</h6>	
+								<h6 class="tm-site-description">Collaborative Product Recommendation Engine</h6>
 							</div>
 						</div>
 						<nav class="col-md-6 col-12 tm-nav">
 							<ul class="tm-nav-ul">
 								<li class="tm-nav-li"><a href="/" class="tm-nav-link active">Home</a></li>
 								<li class="tm-nav-li"><a href="/recommend" class="tm-nav-link active">Explore</a></li>
-								<li class="tm-nav-li"><a href="/login" class="tm-nav-link" >Login</a></li>
-								<li class="tm-nav-li"><a href="/profile" class="tm-nav-link" >Profile</a></li>
+								<li class="tm-nav-li"><a href="/login" class="tm-nav-link">Login</a></li>
+								<li class="tm-nav-li"><a href="/profile" class="tm-nav-link">Profile</a></li>
 							</ul>
-						</nav>	
+						</nav>
 					</div>
 				</div>
 			</div>
@@ -48,7 +48,7 @@
 				<h2 class="col-12 text-center tm-section-title">Welcome to AQSA CHIKAN ARTS</h2>
 				<p class="col-12 text-center">Checkout our popular products. Happy shopping!</p>
 			</header>
-			
+
 
 			<!-- <div class="tm-paging-links">
 				<nav>
@@ -64,26 +64,31 @@
 				<!-- gallery page 1 -->
 				<div id="tm-gallery-page-kitchen" class="tm-gallery-page">
 
-                    {% for i in range(product|length) %}
-					
+					{% for i in range(product|length) %}
+
 					<div class="card" style="width: 14rem; margin-bottom: 20px; margin-right: 55px; ">
-						<img class="card-img-top" src="{{image[i]}}" alt="Card image cap" style="max-height: 260px; object-fit: fill;">
+						<img class="card-img-top" src="{{image[i]}}" alt="Card image cap"
+							style="max-height: 260px; object-fit: fill;">
 						<div class="card-body" style="max-height: fit-content;">
-						  <h5 class="card-title">{{product[i]}}</h5>
-						  <p class="card-text">{{rating[i]}} ⭐</p>
-						  <p class="card-text">{{price[i]}}</p>
-						  <form action="/recommend_kurtis" method="post">
-							<input type="text" name="user_input" value={{product[i]}} style="display:none"/>
-							<button type="submit" class="tm-btn tm-btn-success">See more</button>
-							<a href="/like" class="image-button" type="submit">
-								<img src="../static/img/like.png" alt="Button Image" >
-							  </a>
-						  </form>
-						  
-						  <!-- <a href="#" class="btn btn-primary" style="background-color: #37b85e; padding-left: 17px; padding-right: 17px; text-align: center;">See more</a> -->
+							<h5 class="card-title">{{product[i]}}</h5>
+							<p class="card-text">{{rating[i]}} ⭐</p>
+							<p class="card-text">{{price[i]}}</p>
+							<form action="/recommend_kurtis" method="post">
+								<input type="text" name="user_input" value={{product[i]}} style="display:none" />
+								<button type="submit" class="tm-btn tm-btn-success">See more</button>
+							</form><br>
+							<form action="/like" method="post">
+								<input type="text" name="user_input1" value={{product[i]}} style="display:none" />
+								<!-- <a class="image-button" onclick="addToProfile" type="submit">
+									<img src="../static/img/add.png" alt="Button Image">
+								</a> -->
+								<button type="submit" class="tm-btn tm-btn-success">Add</button>
+							</form>
+
+							<!-- <a href="#" class="btn btn-primary" style="background-color: #37b85e; padding-left: 17px; padding-right: 17px; text-align: center;">See more</a> -->
 						</div>
-					  </div>
-					
+					</div>
+
 
 					<!-- <article class="col-lg-4 col-md-4 col-sm-6 col-12 tm-gallery-item">
 						<figure>
@@ -95,7 +100,7 @@
 							</figcaption>
 						</figure>
 					</article> -->
-                    {% endfor %}
+					{% endfor %}
 				</div> <!-- gallery page 1 -->
 			</div>
 
@@ -108,4 +113,5 @@
 	<script src="../static/js/jquery.min.js"></script>
 	<script src="../static/js/parallax.min.js"></script>
 </body>
+
 </html>

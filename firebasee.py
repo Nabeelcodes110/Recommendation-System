@@ -38,11 +38,11 @@ firebase=pyrebase.initialize_app(config)
 
 # *********************************************DATABASE***********************************
 db = firebase.database()
-# db.child("names").push({"username":"paddy"})
+db.child("names").push({"username":"paddy"})
 # db.child("names").child("username").update({"username":"PArry"})
 # users = db.child("names").child("username").get()
 # print (users.val())
 
-db.child("names").remove()
+# db.child("names").remove()
 
 # *********************************************DATABASE***********************************
