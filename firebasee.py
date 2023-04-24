@@ -8,23 +8,41 @@ config ={
         'messagingSenderId': "783852311498",
         'appId': "1:783852311498:web:c88764d7cf044b31953533",
         'measurementId': "G-NL2VWLZLNK",
-        'databaseURL':''
+        'databaseURL': "https://aqsa-recommend-default-rtdb.firebaseio.com"
 } 
 
 firebase=pyrebase.initialize_app(config)
-auth = firebase.auth()
 
-email = 'test@gmail.com'
-password ='123456' #password has to be 6 didgit
+# ********************************************AUTHENTICATION*****************************
 
-# user=auth.create_user_with_email_and_password(email,password)
-# print(user)
+# auth = firebase.auth()
 
-user = auth.sign_in_with_email_and_password(email,password)
+# email = 'test@gmail.com'
+# password ='123456' #password has to be 6 didgit
 
-# info = auth.get_account_info(user['idToken'])
-# print(info)
+# # user=auth.create_user_with_email_and_password(email,password)
+# # print(user)
 
-auth.send_email_verification(user['idToken'])
+# user = auth.sign_in_with_email_and_password(email,password)
 
-auth.send_password_reset_email(email)
+# # info = auth.get_account_info(user['idToken'])
+# # print(info)
+
+# auth.send_email_verification(user['idToken'])
+
+# auth.send_password_reset_email(email)
+
+# *********************************************AUTHENTICATION*****************************
+
+
+
+# *********************************************DATABASE***********************************
+db = firebase.database()
+# db.child("names").push({"username":"paddy"})
+# db.child("names").child("username").update({"username":"PArry"})
+# users = db.child("names").child("username").get()
+# print (users.val())
+
+db.child("names").remove()
+
+# *********************************************DATABASE***********************************

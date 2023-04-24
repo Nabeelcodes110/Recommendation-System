@@ -13,7 +13,7 @@ product = list(popular_df['product_id'].values)
 rating = list(popular_df['rating_x'].values)
 image = list(popular_df['image_url'].values)
 price = list(popular_df['price'].values)
-print(similarity_scores.shape)
+# print(similarity_scores.shape)
 app = Flask(__name__)
 
 #FIREBASE AUTHENTICATION **********************************
@@ -25,7 +25,7 @@ config ={
         'messagingSenderId': "783852311498",
         'appId': "1:783852311498:web:c88764d7cf044b31953533",
         'measurementId': "G-NL2VWLZLNK",
-        'databaseURL':''
+        'databaseURL': "https://aqsa-recommend-default-rtdb.firebaseio.com"
 } 
 
 firebase=pyrebase.initialize_app(config)
@@ -55,7 +55,7 @@ def signup():
             password = request.form['password']
             # Save the user data to a database, file, or other storage method
             # For this example, we'll just print the data to the console
-            # user=auth.create_user_with_email_and_password(email,password)
+            user=auth.create_user_with_email_and_password(email,password)
             print(f"New user: {email}, password: {password}")
             
         # If the request method is GET, show the signup form
@@ -78,7 +78,7 @@ def login():
             password = request.form['password']
             # Check the user's credentials against the database, file, or other storage method
             # For this example, we'll just print the data to the console
-            print(f"User login: {email}, password: {password}")
+            print("User login: {email}, password: {password}")
             try:
                 user = auth.sign_in_with_email_and_password(email,password)
                 session['user'] = email
@@ -109,6 +109,23 @@ def logout():
                            price = list(popular_df['price'].values)[0:12]
                            )
 
+
+@app.route('/like')
+def like():
+    db = firebase.database()
+    user = session['user']
+
+    user_input = request.form.get('user_input')
+    print(user_input)
+    
+    return render_template('index.html',
+                           product = list(popular_df['product_id'].values)[0:12],
+                           rating = list(popular_df['rating_x'].values)[0:12],
+                           image = list(popular_df['image_url'].values)[0:12],
+                           price = list(popular_df['price'].values)[0:12]
+                           )
+
+
 @app.route('/recommend')
 def recommend_ui():
     return render_template('recommend.html',
@@ -130,7 +147,7 @@ def recommend():
     similar_items= sorted(list(enumerate(similarity_scores[index])),key=lambda x:x[1],reverse=True)
     
     data = []
-    for i in similar_items[0:8]:
+    for i in similar_items[0:9]:
         item = [] 
         temp_df = ratings[ratings['product_id']==X.index[i[0]]]
         item.extend(list(temp_df.drop_duplicates('product_id')['product_id'].values))

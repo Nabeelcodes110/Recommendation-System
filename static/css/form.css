@@ -385,8 +385,11 @@ ul, nav, body, h1, h2, h4, h6, p, figure {
   .tm-site-logo {
 	display: inline-block;
 	margin-right: 20px;
-	max-width: 10%;
+	max-width: 12%;
 	margin-bottom: 5px;
+	border-radius: 35px;
+	padding-bottom: 5px;
+	margin-top: 5px;
   }
   
   .tm-site-text-box {
